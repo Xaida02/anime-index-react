@@ -8,15 +8,15 @@ const SingleAnime = () => {
   const [localLoading, setLocalLoading] = useState(true);
   const { name } = useParams();
 
-  const { setAnimeList, setName } = useGlobalContext();
+  const { animeList, setAnimeList, setName, setLoading } = useGlobalContext();
   const stateName = useGlobalContext().name;
 
-  const localFetch = () => {
-    fetch("https://api.jikan.moe/v4/anime?q=" + name)
+  const localFetch = async () => {
+    await fetch("https://api.jikan.moe/v4/anime?q=" + name)
       .then((response) => response.json())
       .then((animeApi) => {
-        console.log(animeApi.data);
         setAnimeList(animeApi.data);
+        console.log(animeApi.data);
         setCurrentAnime(animeApi.data.find((anime) => anime.title === name));
         setLocalLoading(false);
       })
@@ -26,8 +26,19 @@ const SingleAnime = () => {
       });
   };
 
+  const tryRequest = () => {
+    setTimeout(() => {
+      if (!animeList) {
+        localFetch().then(() => setLoading(false));
+      }
+    }, 5000);
+  };
+
   useEffect(() => {
+    setLoading(true);
+
     localFetch();
+    tryRequest();
     if (!stateName) {
       setName(name);
     }

@@ -7,10 +7,14 @@ const AnimeList = () => {
   const { loading, animeList, name } = useGlobalContext();
 
   if (loading && !animeList) {
-    return <Loading />;
+    return (
+      <h2 className="section-title">
+        <Loading />
+      </h2>
+    );
   }
 
-  if (!animeList.length) {
+  if (animeList && !animeList.length) {
     return (
       <section className="bottom-section">
         <h2 className="section-title">anime not found</h2>

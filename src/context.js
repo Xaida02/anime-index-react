@@ -7,7 +7,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
-  const [animeList, setAnimeList] = useState([]);
+  const [animeList, setAnimeList] = useState(null);
 
   const fetchData = useCallback(async () => {
     setLoading(true);
@@ -29,7 +29,7 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ name, setAnimeList, animeList, setName, loading }}
+      value={{ name, setAnimeList, animeList, setLoading, setName, loading }}
     >
       {children}
     </AppContext.Provider>
