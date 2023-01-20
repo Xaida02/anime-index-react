@@ -29,7 +29,14 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ name, setAnimeList, animeList, setLoading, setName, loading }}
+      value={{
+        name,
+        setAnimeList,
+        animeList,
+        setLoading,
+        setName,
+        loading,
+      }}
     >
       {children}
     </AppContext.Provider>

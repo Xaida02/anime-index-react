@@ -8,14 +8,13 @@ const SingleAnime = () => {
   const [localLoading, setLocalLoading] = useState(true);
   const { name } = useParams();
 
-  const { animeList, setAnimeList, setName, setLoading } = useGlobalContext();
-  const stateName = useGlobalContext().name;
+  const { fetchData, animeList, setAnimeList, setName, setLoading } =
+    useGlobalContext();
 
   const localFetch = async () => {
     await fetch("https://api.jikan.moe/v4/anime?q=" + name)
       .then((response) => response.json())
       .then((animeApi) => {
-        setAnimeList(animeApi.data);
         console.log(animeApi.data);
         setCurrentAnime(animeApi.data.find((anime) => anime.title === name));
         setLocalLoading(false);
@@ -26,23 +25,9 @@ const SingleAnime = () => {
       });
   };
 
-  const tryRequest = () => {
-    setTimeout(() => {
-      if (!animeList) {
-        localFetch().then(() => setLoading(false));
-      }
-    }, 5000);
-  };
-
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-
-    setLoading(true);
     localFetch();
-    tryRequest();
-    if (!stateName) {
-      setName(name);
-    }
     console.log(currentAnime);
   }, []);
 
@@ -100,11 +85,9 @@ const SingleAnime = () => {
           <p className="synopsis">{synopsis}</p>
         </div>
       )}
-      {animeList && (
-        <Link style={{ alignSelf: "center" }} className="btn btn-home" to={"/"}>
-          back home
-        </Link>
-      )}
+      <a style={{ alignSelf: "center" }} className="btn btn-home" href="/">
+        Back home
+      </a>
     </section>
   );
 };

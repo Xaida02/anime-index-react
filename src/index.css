@@ -1,7 +1,7 @@
 /* variables */
 
 ::placeholder {
-  color: rgba(248, 248, 255, 0.419);
+  color: #0d161687;
   letter-spacing: 2px;
 }
 
@@ -10,16 +10,16 @@ input:focus::placeholder {
 }
 
 :root {
-  --clr-primary: #0f4e60;
-  --clr-primary-dark: #06143b;
+  --clr-primary: #173e3b;
+  --clr-primary-dark: #0d1616;
   --clr-primary-light: #084542;
-  --clr-grey-1: #102a42;
-  --clr-grey-5: #617d98;
-  --clr-grey-10: #f1f5f8;
-  --clr-white: rgb(180, 129, 129);
+  --clr-dark-1: #07121155;
+  --clr-grey-5: #bfbfca;
+  --clr-grey-10: #7a9b99;
+  --clr-white: #e6ecec;
   --clr-red-dark: rgb(213, 59, 59);
-  --clr-red-light: rgba(230, 107, 107, 0.655);
-  --transition: all 0.3s linear;
+  --clr-green-light: #14a37f;
+  --transition: all 0.1s linear;
   --spacing: 0.25rem;
   --radius: 0.25rem;
   /* --large-screen-width: 1170px; */
@@ -32,7 +32,7 @@ input:focus::placeholder {
   padding: 0;
   box-sizing: border-box;
   font-family: Roboto;
-  color: whitesmoke;
+  color: #e9eeee;
 }
 
 body {
@@ -43,7 +43,6 @@ body {
 
 .navbar {
   box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.75);
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,7 +88,7 @@ a {
 .nav-link::after {
   content: "";
   position: absolute;
-  background-color: #03bcf4;
+  background-color: var(--clr-grey-10);
   height: 3px;
   width: 0;
   left: 0;
@@ -112,7 +111,7 @@ a {
   font-family: Titillium Web;
   user-select: none;
   font-weight: bold;
-  color: #0e3742;
+  color: var(--clr-dark-1);
   line-height: 0.7em;
   font-size: 4vh;
   outline-color: none;
@@ -156,7 +155,7 @@ a {
   font-size: 1.2rem;
   margin-bottom: 20px;
   letter-spacing: 5px;
-  color: #617d98;
+  color: #9cb5b3;
 }
 
 @media screen and (max-width: 630px) {
@@ -181,11 +180,20 @@ a {
   }
 
   .loader {
-    position: absolute;
-    width: 100vh;
-    height: 100vh;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 0.5em;
+    top: 0;
+    left: 0;
     z-index: 6;
     background-color: #000021;
+  }
+
+  .loading {
+    text-align: center;
   }
 
   .search-form {
@@ -205,6 +213,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+
   overflow: hidden;
   width: 100%;
 }
@@ -213,7 +222,9 @@ a {
   background-color: var(--clr-grey-5);
   border: none;
   height: 6vh;
+  color: var(--clr-primary-dark);
   padding: 0 10px;
+  font-weight: bold;
 }
 
 .form-control > input {
@@ -225,12 +236,16 @@ input:focus {
 }
 
 .submit-btn {
-  background-color: #687ab0;
+  background-color: #376764;
   transition: var(--transition);
 }
 
 .submit-btn:hover {
-  background-color: #3e5973;
+  background-color: #527d7b;
+}
+
+.submit-btn:hover > * {
+  fill: #07232b;
 }
 
 /* List  */
@@ -299,7 +314,7 @@ input:focus {
 }
 
 .title:hover {
-  color: #1889a9;
+  color: var(--clr-grey-10);
 }
 
 .btn-details {
@@ -369,8 +384,8 @@ input:focus {
   border-radius: 3px;
   padding: 12px 24px;
   border: 0;
-  color: #000021;
-  background: #1de9b6bc;
+  color: var(--clr-white);
+  background: #0f755c;
   line-height: 1.15;
   font-size: 16px;
   text-transform: uppercase;
@@ -378,8 +393,8 @@ input:focus {
 }
 
 .btn-home:hover {
-  transition: all 0.1s ease;
-  box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6bc;
+  transition: var(--transition);
+  box-shadow: 0 0 0 0 #fff, 0 0 0 3px var(--clr-primary);
 }
 
 /* loading component */
@@ -395,8 +410,8 @@ input:focus {
 
 .loading {
   position: relative;
-  color: #333;
-  border-bottom: 16px solid #333;
+  color: #020e0b;
+  border-bottom: 16px solid #020e0b;
   line-height: 1.4;
   font-family: consolas;
   text-transform: uppercase;
@@ -408,10 +423,10 @@ input:focus {
   position: absolute;
   top: 0px;
   left: 0px;
-  border-bottom: 16px solid #03bcf4;
+  border-bottom: 16px solid var(--clr-green-light);
   width: 100%;
   animation: lod 2s linear infinite;
-  color: #03bcf4;
+  color: var(--clr-green-light);
   overflow: hidden;
 }
 
@@ -536,7 +551,7 @@ input:focus {
   80%,
   90.1%,
   92% {
-    color: #0e3742;
+    color: var(--clr-dark-1);
     text-shadow: none;
   }
   18.1%,
@@ -549,9 +564,10 @@ input:focus {
   90%,
   92.1%,
   100% {
-    color: white;
-    text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4, 0 0 40px #03bcf4,
-      0 0 80px #03bcf4, 0 0 160px #03bcf4;
+    color: var(--clr-grey-5);
+    text-shadow: 0 0 10px var(--clr-grey-5), 0 0 20px var(--clr-grey-5),
+      0 0 40px var(--clr-grey-5), 0 0 80px var(--clr-grey-5),
+      0 0 160px var(--clr-grey-5);
   }
 }
 

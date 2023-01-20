@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Anime from "./Anime";
 import Loading from "./Loading";
 import { useGlobalContext } from "../context";
 
 const AnimeList = () => {
-  const { loading, animeList, name } = useGlobalContext();
+  const {
+    // setLoading,
+    // setName,
+    // setAnimeList,
+    // fetchData,
+    loading,
+    animeList,
+    name,
+  } = useGlobalContext();
 
-  if (loading && !animeList) {
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setName("");
+  //   setAnimeList(null);
+  //   fetchData();
+  // }, []);
+
+  if (loading) {
     return (
       <section className="bottom-section section">
         <h2

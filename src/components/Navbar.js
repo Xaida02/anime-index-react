@@ -5,11 +5,11 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-center">
-        <Link className="logo-container" to="/">
+        <a className="logo-container" href="/">
           <h4 className="logo" translate="no">
             Anime Index
           </h4>
-        </Link>
+        </a>
         <ul className="nav-links">
           <li>
             <a className="nav-link" href="/">
