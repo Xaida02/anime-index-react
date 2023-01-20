@@ -8,9 +8,14 @@ const AnimeList = () => {
 
   if (loading && !animeList) {
     return (
-      <h2 className="section-title">
-        <Loading />
-      </h2>
+      <section className="bottom-section section">
+        <h2
+          style={{ position: "absolute", top: "20px" }}
+          className="section-title"
+        >
+          <Loading />
+        </h2>
+      </section>
     );
   }
 

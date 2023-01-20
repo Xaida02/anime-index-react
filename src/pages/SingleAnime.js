@@ -35,8 +35,9 @@ const SingleAnime = () => {
   };
 
   useEffect(() => {
-    setLoading(true);
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
+    setLoading(true);
     localFetch();
     tryRequest();
     if (!stateName) {
@@ -99,9 +100,11 @@ const SingleAnime = () => {
           <p className="synopsis">{synopsis}</p>
         </div>
       )}
-      <Link style={{ alignSelf: "center" }} className="btn btn-home" to={"/"}>
-        back home
-      </Link>
+      {animeList && (
+        <Link style={{ alignSelf: "center" }} className="btn btn-home" to={"/"}>
+          back home
+        </Link>
+      )}
     </section>
   );
 };

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Anime = ({ type, title, images, status }) => {
   return (
-    <article className="anime">
+    <Link to={`/anime/${title}`} className="anime">
       <div className="img-container">
         <img
           className="item-img"
@@ -20,14 +20,19 @@ const Anime = ({ type, title, images, status }) => {
         >
           {status || "unknown"}
         </p>
-        <Link className="btn btn-primary btn-details" to={`/anime/${title}`}>
+        <button
+          style={{ cursor: "pointer" }}
+          onClick="window.scroll(0);"
+          className="btn btn-primary btn-details"
+          // to={`/anime/${title}`}
+        >
           Info
-        </Link>
+        </button>
       </div>
       <h4 className="title" title={title}>
         {title.length < 29 ? title : title.substring(0, 30) + "..."}
       </h4>
-    </article>
+    </Link>
   );
 };
 

@@ -82,6 +82,8 @@ a {
   letter-spacing: 1px;
   color: #e7edef;
   padding: 0 10px;
+  text-transform: capitalize;
+  user-select: none;
 }
 
 .nav-link::after {
